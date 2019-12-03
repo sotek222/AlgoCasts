@@ -18,13 +18,24 @@
 // };
 
 // solution #2
+// function reverse(str) {
+//   return str.split("")
+//   .reduce((acc, cv) => {
+//       acc.unshift(cv);
+//       return acc;
+//     }, [])
+//   .join("");
+// };
+
+// solution #3
 function reverse(str) {
-  return str.split("")
-  .reduce((acc, cv) => {
-      acc.unshift(cv);
-      return acc;
-    }, [])
-  .join("");
+  let revStr = "";
+
+  for(let i = (str.length - 1); i >= 0; i--){
+    revStr += str[i];
+  };
+
+  return revStr;
 };
 
 module.exports = reverse;
