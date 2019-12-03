@@ -8,6 +8,14 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
-function reverseInt(n) {}
+// start with leading 0, gets interpreted as octal by JS.
+function reverseInt(n) {
+  let strNum = n.toString();
+  let newStr = "";
+  for (let i = strNum.length - 1; i >= 0; i--) {
+    strNum[i] === "-" ? (newStr = strNum[i] + newStr) : (newStr += strNum[i]);
+  }
+  return parseInt(newStr);
+}
 
 module.exports = reverseInt;
