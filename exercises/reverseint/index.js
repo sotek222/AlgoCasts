@@ -13,15 +13,19 @@
 // 1. Numbers with trailing 0's, lose the 0's when reversed.
 // 2. Negative numbers remain negative on reversal.
 
-// Solution #2:
+// Solution #3:
 function reverseInt(n) {
-  const revArr = n.toString().split('').reverse();
-  if (n < 0) {
-    revArr.unshift(revArr.pop());
-    return Number(revArr.join(''));
-  } else {
-    return Number(revArr.join(''));
-  }
+  const numStr = n
+    .toString()
+    .split('')
+
+  const reverse =  numStr.reduce((acc, cv) => {
+    acc.unshift(cv) 
+    return acc
+  }, [])
+  .join('');
+
+  return Math.sign(n) * parseInt(reverse);
 };
 
 module.exports = reverseInt;
