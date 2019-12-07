@@ -10,22 +10,20 @@
 
 function chunk(array, size) {
   const chunkArr = [];
-  let subArr = [];
-
-  for(let i = 0; i < array.length; i++){
-    subArr.push(array[i]);
-
-    if(subArr.length === size || i === (array.length - 1)){
-      chunkArr.push(subArr);
-      subArr = [];
+  array.forEach(ele => {
+    const last = chunkArr[chunkArr.length - 1];
+    if(!last || last.length === size){
+      chunkArr.push([ele]);
+    } else {
+      last.push(ele);
     }
-  };
-
+  });
   return chunkArr;
 };
 
 module.exports = chunk;
 
+// Solution #1:
 // function chunk(array, size) {
 //   // This array will store our chunks
 //   const chunkArr = [];
