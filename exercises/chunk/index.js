@@ -8,17 +8,22 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-// Solution #3:
+// Questions for interviewer: 
+// 1. Can we always assume array will have a length greater than 0?
+// 2. Can we assume that size will always be greater than 0? 
+// 3. Does it matter if we are destructive to the original array?
+
+// Solution #4:
 function chunk(array, size) {
-  return array.reduce((chunkArr, cv) => {
-    const last = chunkArr[chunkArr.length - 1];
-    if(!last || last.length === size){
-      chunkArr.push([cv]);
-    } else {
-      last.push(cv);
-    }
-    return chunkArr;
-  }, []);
+  const chunked = [];
+// We iterate and increment by the input size.
+// this allows us to stop at each point for the slice method to start at.
+// and where we need the slice method to stop at as well.
+  for(let i = 0; i < array.length; i += size){
+    chunked.push(array.slice(i, i + size))
+  };
+
+  return chunked;
 };
 
 
@@ -63,4 +68,17 @@ module.exports = chunk;
 //     }
 //   });
 //   return chunkArr;
+// };
+
+// Solution #3:
+// function chunk(array, size) {
+//   return array.reduce((chunkArr, cv) => {
+//     const last = chunkArr[chunkArr.length - 1];
+//     if(!last || last.length === size){
+//       chunkArr.push([cv]);
+//     } else {
+//       last.push(cv);
+//     }
+//     return chunkArr;
+//   }, []);
 // };
