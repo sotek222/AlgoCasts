@@ -7,9 +7,32 @@
 //   anagrams('rail safety', 'fairy tales') --> True
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
-
 // anagrams('RAIL! SAFETY!', 'fairy tales')
 
-function anagrams(stringA, stringB) {};
+// Solution #1:
+function anagrams(stringA, stringB) {
+  const mapA = new Map(), mapB = new Map();
+  const cleanStrA = stringA.replace(/\W+/g, "").toLowerCase();
+  const cleanStrB = stringB.replace(/\W+/g, "").toLowerCase();
+  
+  if(cleanStrA.length !== cleanStrB.length) return false;
+  
+  for (const char of cleanStrA) {
+    mapA[char] = mapA[char] + 1 || 1;
+  };
+  for (const char of cleanStrB) {
+    mapB[char] = mapB[char] + 1 || 1;
+  };
+  
+  let anagram = true;
+
+  for (const char in mapA) {
+    if (!mapB.hasOwnProperty(char) ||  mapB[char] !== mapA[char]) {
+      anagram = false;
+      break;
+    };
+  };
+  return anagram;
+};
 
 module.exports = anagrams;
