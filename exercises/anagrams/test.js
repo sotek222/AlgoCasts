@@ -31,3 +31,10 @@ test('"aahhaaah" is not an anagram of "ahahahahah"', () => {
     anagrams('aahhaaah', 'ahahahahah')
   ).toBeFalsy();
 });
+
+test('"hello" is not an anagram of "hellos"', () => {
+  expect(
+    anagrams('hello', 'hellos')
+  ).toBeFalsy();
+});
+
