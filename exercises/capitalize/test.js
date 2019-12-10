@@ -15,3 +15,7 @@ test('capitalizes the first letter', () => {
     'I Love Breakfast At Bill Miller Bbq'
   );
 });
+
+test('does not capitalize every letter', () => {
+  expect(capitalize('hello world!')[1]).toEqual('e');
+});
