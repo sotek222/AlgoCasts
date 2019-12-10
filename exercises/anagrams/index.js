@@ -9,27 +9,14 @@
 //   anagrams('Hi there', 'Bye there') --> False
 // anagrams('RAIL! SAFETY!', 'fairy tales')
 
-// Solution #2:
+// Solution #3:
 function anagrams(stringA, stringB) {
-  const mapA = new Map();
-  const cleanStrA = stringA.replace(/\W+/g, "").toLowerCase();
-  const cleanStrB = stringB.replace(/\W+/g, "").toLowerCase();
-  if (cleanStrA.length !== cleanStrB.length) return false;
-
-  for (const char of cleanStrA) {
-    mapA[char] = mapA[char] + 1 || 1;
-  };
-
-  for (const char of cleanStrB) {
-    if(mapA.hasOwnProperty(char) && mapA[char] > 0){
-      mapA[char]--;
-    } else {
-      return false;
-    };
-  };
-
-  return Array.from(mapA.values()).every(num => num === 0);
+  return cleanString(stringA) === cleanString(stringB);
 };
+
+function cleanString(str){
+  return str.replace(/\W+/g, '').toLowerCase().split('').sort().join('');
+}
 
 module.exports = anagrams;
 
@@ -56,4 +43,26 @@ module.exports = anagrams;
 //     };
 //   };
 //   return anagram;
+// };
+
+// Solution #2:
+// function anagrams(stringA, stringB) {
+//   const mapA = new Map();
+//   const cleanStrA = stringA.replace(/\W+/g, "").toLowerCase();
+//   const cleanStrB = stringB.replace(/\W+/g, "").toLowerCase();
+//   if (cleanStrA.length !== cleanStrB.length) return false;
+
+//   for (const char of cleanStrA) {
+//     mapA[char] = mapA[char] + 1 || 1;
+//   };
+
+//   for (const char of cleanStrB) {
+//     if (mapA.hasOwnProperty(char) && mapA[char] > 0) {
+//       mapA[char]--;
+//     } else {
+//       return false;
+//     };
+//   };
+
+//   return Array.from(mapA.values()).every(num => num === 0);
 // };
