@@ -18,13 +18,23 @@
 //       '####'
 
 function steps(n) {
-  const stair = new Array(n).fill(" ");
+  let stair = " ".repeat(n);
 
   for(let i = 0; i < n; i++){
-    stair.unshift("#");
-    stair.pop();
-    console.log(stair.join(""));
+    stair = "#" + stair;
+    console.log(stair.slice(0, n));
   };
 };
 
 module.exports = steps;
+
+// Solution #1:
+// function steps(n) {
+//   const stair = new Array(n).fill(" ");
+
+//   for (let i = 0; i < n; i++) {
+//     stair.unshift("#");
+//     stair.pop();
+//     console.log(stair.join(""));
+//   };
+// };
