@@ -17,6 +17,14 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+  const stair = new Array(n).fill(" ");
+
+  for(let i = 0; i < n; i++){
+    stair.unshift("#");
+    stair.pop();
+    console.log(stair.join(""));
+  };
+};
 
 module.exports = steps;
