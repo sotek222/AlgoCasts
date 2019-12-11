@@ -18,11 +18,16 @@
 //       '####'
 
 function steps(n) {
-  let stair = " ".repeat(n);
-
-  for(let i = 0; i < n; i++){
-    stair = "#" + stair;
-    console.log(stair.slice(0, n));
+  for(let row = 0; row < n; row++){
+    let stair = "";
+    for (let col = 0; col < n; col++) {
+      if(col <= row){
+        stair = "#" + stair;
+      } else {
+        stair = stair + " ";
+      }
+    };
+    console.log(stair);
   };
 };
 
@@ -36,5 +41,15 @@ module.exports = steps;
 //     stair.unshift("#");
 //     stair.pop();
 //     console.log(stair.join(""));
+//   };
+// };
+
+// Solution #2:
+// function steps(n) {
+//   let stair = " ".repeat(n);
+
+//   for (let i = 0; i < n; i++) {
+//     stair = "#" + stair;
+//     console.log(stair.slice(0, n));
 //   };
 // };
