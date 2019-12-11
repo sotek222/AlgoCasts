@@ -19,3 +19,11 @@ test('capitalizes the first letter', () => {
 test('does not capitalize every letter', () => {
   expect(capitalize('hello world!')[1]).toEqual('e');
 });
+
+test('does not capitalize already capitalized words', () => {
+  expect(capitalize('Javascript is cool')).toEqual('Javascript Is Cool');
+});
+
+test('does not capitalize non-alphanumeric characters', () => {
+  expect(capitalize('! wow thats not a letter!')).toEqual('! Wow Thats Not A Letter!');
+});
