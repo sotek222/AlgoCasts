@@ -7,26 +7,31 @@
 //   pyramid(1)
 //       '#'
 //   pyramid(2)
-//       ' # '
-//       '###'
+//         012    
+//       0' # '
+//       1'###'
 //   pyramid(3)
-//       '  #  '
-//       ' ### '
-//       '#####'
+//         01234
+//       0'  #  '
+//       1' ### '
+//       2'#####'
 
-
+// Solution #2:
 function pyramid(n) {
   const width = n + (n - 1);
+  const midPoint = Math.floor(width / 2);
 
-  for(let i = 0, spaces = (n - 1); i < n; i++, spaces--){
-    const step = [];
-
-    step.unshift(" ".repeat(spaces));
-    step.push("#".repeat(width - (spaces * 2)));
-    step.push(" ".repeat(spaces));
-    
-    console.log(step.join(""))
-  }
+  for(let row = 0; row < n; row++){
+    let step = "";
+    for(let col = 0; col < width; col++){
+      if (col <= (midPoint + row) && col >= (midPoint - row)) {
+        step += "#";
+      } else {
+        step += " ";
+      };
+    };
+    console.log(step);
+  };
 };
 
 module.exports = pyramid;
