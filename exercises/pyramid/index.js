@@ -16,22 +16,27 @@
 //       1' ### '
 //       2'#####'
 
-// Solution #2:
+// Solution #3:
 function pyramid(n) {
-  const width = n + (n - 1);
-  const midPoint = Math.floor(width / 2);
+  const width = (n * 2) - 1;
 
-  for(let row = 0; row < n; row++){
-    let step = "";
-    for(let col = 0; col < width; col++){
-      if (col <= (midPoint + row) && col >= (midPoint - row)) {
-        step += "#";
-      } else {
-        step += " ";
-      };
+  function buildStep(n, hashes){
+    if (hashes <= 0) {
+      return;
     };
+
+    let step = '';
+
+    step += " ".repeat((width - hashes) / 2);
+    step += "#".repeat(hashes)
+    step += " ".repeat((width - hashes) / 2);
+
+    buildStep(n, hashes - 2);
+
     console.log(step);
-  };
+  };    
+
+  buildStep(n, width);
 };
 
 module.exports = pyramid;
@@ -62,4 +67,22 @@ module.exports = pyramid;
 //     // Finally,  we log, the current step joined as a string to the console.
 //     console.log(step.join(""))
 //   }
+// };
+
+// Solution #2:
+// function pyramid(n) {
+//   const width = n + (n - 1);
+//   const midPoint = Math.floor(width / 2);
+
+//   for (let row = 0; row < n; row++) {
+//     let step = "";
+//     for (let col = 0; col < width; col++) {
+//       if (col <= (midPoint + row) && col >= (midPoint - row)) {
+//         step += "#";
+//       } else {
+//         step += " ";
+//       };
+//     };
+//     console.log(step);
+//   };
 // };
