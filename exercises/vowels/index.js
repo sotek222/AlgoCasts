@@ -7,12 +7,9 @@
 //   vowels('Why do you ask?') --> 4
 //   vowels('Why?') --> 0
 
-// Solution #2:
+// Solution #3:
 function vowels(str) {
-  return str.split("").reduce((acc, char) => {
-    "aeiou".includes(char.toLowerCase()) ? acc++ : null;
-    return acc;
-  }, 0);
+  return str.split(/[^aeiou]/gi).join("").length
 };
 
 module.exports = vowels;
@@ -26,4 +23,12 @@ module.exports = vowels;
 //   });
 
 //   return count;
+// };
+
+// Solution #2:
+// function vowels(str) {
+//   return str.split("").reduce((acc, char) => {
+//     "aeiou".includes(char.toLowerCase()) ? acc++ : null;
+//     return acc;
+//   }, 0);
 // };
