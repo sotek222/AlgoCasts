@@ -9,7 +9,21 @@
 //   fib(4) === 3
 
 
-function fib(n) {
+function memoize(fn){
+  // this will hold previous results;
+  const cache = {};
+  return function(...args){
+    if(cache[args]){
+      return cache[args];
+    } else {
+      const result = fn.apply(this, args);
+      cache[args] = result;
+      return result;
+    } ;
+  };
+};
+
+function slowFib(n) {
   if(n < 2){
     return n;
   }; 
@@ -17,7 +31,7 @@ function fib(n) {
   return fib(n - 1) + fib(n - 2);
 };
 
-
+const fib = memoize(slowFib);
 
 module.exports = fib;
 
@@ -45,4 +59,13 @@ module.exports = fib;
 //   };
 
 //   return buildSequence(n, 0, 1);
+// };
+
+// Solution #3:
+// function fib(n) {
+//   if (n < 2) {
+//     return n;
+//   };
+
+//   return fib(n - 1) + fib(n - 2);
 // };
