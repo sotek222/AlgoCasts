@@ -10,16 +10,11 @@
 
 
 function fib(n) {
-  function buildSequence(n, prev, current){
-    if (n === 1) {
-      return current;
-    };
-    const next = prev  + current;
-    prev = current;
-    return buildSequence(n - 1, prev, next);
-  };
+  if(n < 2){
+    return n;
+  }; 
 
-  return buildSequence(n, 0, 1);
+  return fib(n - 1) + fib(n - 2);
 };
 
 
@@ -36,4 +31,18 @@ module.exports = fib;
 //   };
 
 //   return sequence[n];
+// };
+
+// Solution #2:
+// function fib(n) {
+//   function buildSequence(n, prev, current) {
+//     if (n === 1) {
+//       return current;
+//     };
+//     const next = prev + current;
+//     prev = current;
+//     return buildSequence(n - 1, prev, next);
+//   };
+
+//   return buildSequence(n, 0, 1);
 // };
