@@ -15,8 +15,10 @@ test('can remove elements from a queue', () => {
   const q = new Queue();
   expect(() => {
     q.add(1);
+    q.add(2);
     q.remove();
   }).not.toThrow();
+  expect(q.peek()).toEqual(2);
 });
 
 test('Order of elements is maintained', () => {
