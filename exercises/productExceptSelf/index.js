@@ -5,40 +5,32 @@
 // productExceptSelf([1,2,3,4])
 // output: [24,12,8,6]
 
+function getProduct(arr){
+  return arr.reduce((acc, cv) => acc * cv);
+}
+
 
 function productExceptSelf(arr){
-  const productArr = [];
-
-  for (let i = 0; i < arr.length; i++) {
-    let product = 1;
-    for (let j = 0; j < arr.length; j++) {
-      if(j !== i){
-        product *= arr[j];
-      }
-    }
-    productArr.push(product);
-    product = 1;
-  }
-
-  return productArr;
+  const product = getProduct(arr);
+  return arr.map(num => product / num)
 };
 
 module.exports = productExceptSelf
 
 // Solution #1: 
-function productExceptSelf(arr) {
-  const productArr = [];
+// function productExceptSelf(arr) {
+//   const productArr = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    let product = 1;
-    for (let j = 0; j < arr.length; j++) {
-      if (j !== i) {
-        product *= arr[j];
-      }
-    }
-    productArr.push(product);
-    product = 1;
-  }
+//   for (let i = 0; i < arr.length; i++) {
+//     let product = 1;
+//     for (let j = 0; j < arr.length; j++) {
+//       if (j !== i) {
+//         product *= arr[j];
+//       }
+//     }
+//     productArr.push(product);
+//     product = 1;
+//   }
 
-  return productArr;
-};
+//   return productArr;
+// };
