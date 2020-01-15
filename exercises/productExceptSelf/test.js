@@ -30,11 +30,6 @@ test('productExceptSelf works with only two numbers', () => {
   expect(product).toEqual([8, 3]);
 });
 
-test('productExceptSelf works with 0', () => {
-  const product = productExceptSelf([1,3,6,0])
-  expect(product).toEqual([0,0,0,18]);
-});
-
 test('productExceptSelf works with large numbers', () => {
   const product = productExceptSelf([100, 150, 300, 420]);
   expect(product).toEqual([18900000, 12600000, 6300000, 4500000]);
