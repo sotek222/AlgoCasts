@@ -7,12 +7,12 @@
 
 function getProduct(arr){
   return arr.reduce((acc, cv) => acc * cv);
-}
+};
 
 
 function productExceptSelf(arr){
   const product = getProduct(arr);
-  return arr.map(num => product / num)
+  return arr.map(num => product / num);
 };
 
 module.exports = productExceptSelf
