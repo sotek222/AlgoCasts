@@ -44,12 +44,11 @@ class LinkedList {
   }
 
   removeFirst(){
-    if (this.size() > 1) {
-      this.head = this.head.next;
-      this.length--;
-    } else {
-      this.clear();
-      };
+    if (!this.head) {
+      return this;
+    }
+    this.head = this.head.next;
+    this.length--;
     return this;
   }
 
@@ -141,7 +140,7 @@ class LinkedList {
 
   forEach(fn){
     let node = this.head;
-    for (let i = 0; i < this.size(); i++){
+    while (node) {
       fn(node);
       node = node.next;
     };
@@ -184,6 +183,7 @@ l.insertLast("a");
 l.insertLast("b");
 l.insertLast("c");
 l.insertLast("d");
+
 
 module.exports = { Node, LinkedList };
 
