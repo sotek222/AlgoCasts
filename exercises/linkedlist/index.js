@@ -161,30 +161,41 @@ class LinkedList {
     });
     return ll;
   }
+
+  *[Symbol.iterator](){
+    let node = this.head;
+
+    while(node){
+      yield node;
+      node = node.next;
+    }
+  }
   
 }
 
+// for..of first implementation: 
+// class LinkedListIterator {
+//   constructor(list){
+//     this.list = list;
+//     this.member = 0;
+//   }
 
-class LinkedListIterator {
-  constructor(list){
-    this.list = list;
-    this.member = 0;
-  }
+//   next() {
+//     const node = this.list.getAt(this.member);
+//     if(!node) return { done: true };
 
-  next() {
-    const node = this.list.getAt(this.member);
-    if(!node) return { done: true };
+//     const value = node;
 
-    const value = node;
+//     this.member++;
+//     return { value, done: false };
+//   }
+// };
 
-    this.member++;
-    return { value, done: false };
-  }
-};
+// LinkedList.prototype[Symbol.iterator] = function(){
+//   return new LinkedListIterator(this);
+// }; 
 
-LinkedList.prototype[Symbol.iterator] = function(){
-  return new LinkedListIterator(this);
-}; 
+
 
 const l = new LinkedList();
 l.insertLast("a");
