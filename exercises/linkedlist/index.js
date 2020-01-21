@@ -153,6 +153,14 @@ class LinkedList {
     this.forEach(node => arr.push(fn(node)));
     return arr;
   }
+
+  static fromArray(arr){
+    const ll = new LinkedList();
+    arr.forEach(function(element){
+      ll.insertFirst(element);
+    });
+    return ll;
+  }
   
 }
 
@@ -165,7 +173,7 @@ class LinkedListIterator {
 
   next() {
     const node = this.list.getAt(this.member);
-    if(!node) return {done: true};
+    if(!node) return { done: true };
 
     const value = node;
 
