@@ -7,6 +7,10 @@ test('Midpoint is a function', () => {
   expect(typeof midpoint).toEqual('function');
 });
 
+test('Midpoint does not access size method', () => {
+  expect(/(.size())/.test(midpoint.toString())).toEqual(false);
+})
+
 describe('Midpoint returns the middle node of an odd numbered list', () => {
   test('when the list has 3 elements', () => {
     const l = new LinkedList();
