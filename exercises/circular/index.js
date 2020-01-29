@@ -16,17 +16,15 @@
 function circular(list) {
   let slow = list.head;
   let fast = list.head;
-  let circular = false;
 
   while (fast.next && fast.next.next) {
     slow = slow.next;
     fast = fast.next.next;
     if (slow === fast) {
-      circular = true;
-      break;
+      return true;
     } 
   }
-  return circular
+  return false;
 }
 
 module.exports = circular;
