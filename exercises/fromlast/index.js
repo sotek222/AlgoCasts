@@ -11,22 +11,39 @@
 //    list.insertLast('d');
 //    fromLast(list, 2).data // 'b'
 
-// Solution #1:
+// Solution #2:
 function fromLast(list, n) {
-  let current = list.head;
-  let nAway = list.head;
+  let fast = list.head;
+  let slow = list.head;
 
-  while(current){
-    for (let i = 0; i < n; i++) {
-      nAway = nAway.next;
-    };
-    if(!nAway.next){
-      break;
-    }
-    current = current.next;
-    nAway = current;
+  for (let i = 0; i < n; i++) {
+    fast = fast.next;
+  };
+
+  while (fast.next) {
+    fast = fast.next;
+    slow = slow.next;
   }
-  return current;
+
+  return slow;
 };
 
 module.exports = fromLast;
+
+// Solution #1: 
+// function fromLast(list, n) {
+//   let current = list.head;
+//   let nAway = list.head;
+
+//   while (current) {
+//     for (let i = 0; i < n; i++) {
+//       nAway = nAway.next;
+//     };
+//     if (!nAway.next) {
+//       break;
+//     }
+//     current = current.next;
+//     nAway = current;
+//   }
+//   return current;
+// };
