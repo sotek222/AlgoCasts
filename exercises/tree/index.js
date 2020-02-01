@@ -32,23 +32,18 @@ class Tree {
   }
 
   traverseBF(fn){
-    const tasks = [this.root];
-    let position = 0;
-    let node = tasks[position];
-
-    while(node){
-      tasks.push(...node.children);
-      position++;
-      node = tasks[position];
+    const nodes = [this.root];
+    while(nodes.length > 0){
+      const currentNode = nodes.shift();
+      fn(currentNode);
+      nodes.push(...currentNode.children);
     }
-
-    tasks.forEach(node => fn(node));
   }
-
+  
   traverseDF(fn){
-
+    
   }
-
+  
 }
 const t = new Tree();
 t.root = new Node('a');
@@ -56,3 +51,18 @@ t.root.add('b');
 t.root.add('c');
 t.root.children[0].add('d');
 module.exports = { Tree, Node };
+
+// Solution #1: 
+// traverseBF(fn){
+//   const tasks = [this.root];
+//   let position = 0;
+//   let node = tasks[position];
+
+//   while(node){
+//     tasks.push(...node.children);
+//     position++;
+//     node = tasks[position];
+//   }
+
+//   tasks.forEach(node => fn(node));
+// }
