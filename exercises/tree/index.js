@@ -41,18 +41,13 @@ class Tree {
   }
   
   traverseDF(fn){
-    this.utility(this.root, fn)
+    const arr = [this.root];
+    while(arr.length > 0){
+      const currentNode = arr.shift();
+      fn(currentNode);
+      arr.unshift(...currentNode.children);
+    }
   }
-
-  utility(node, fn){
-    fn(node);
-    if(node.children.length){
-      node.children.forEach(child => {
-        this.utility(child, fn);
-      });
-    };
-  }
-  
 }
 const t = new Tree();
 t.root = new Node('a');
@@ -74,4 +69,18 @@ module.exports = { Tree, Node };
 //   }
 
 //   tasks.forEach(node => fn(node));
+// }
+
+// Solution #1: 
+// traverseDF(fn){
+//   this.utility(this.root, fn)
+// }
+
+// utility(node, fn){
+//   fn(node);
+//   if (node.children.length) {
+//     node.children.forEach(child => {
+//       this.utility(child, fn);
+//     });
+//   };
 // }
