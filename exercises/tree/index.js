@@ -41,7 +41,16 @@ class Tree {
   }
   
   traverseDF(fn){
-    
+    this.utility(this.root, fn)
+  }
+
+  utility(node, fn){
+    fn(node);
+    if(node.children.length){
+      node.children.forEach(child => {
+        this.utility(child, fn);
+      });
+    };
   }
   
 }
