@@ -37,6 +37,25 @@ class Node {
     prevNode.left = newNode;
   }
 
+  contains(data){
+    let node = this;
+
+    if(node.data === data){
+      return node;
+    } else {
+      if (node.left || node.right) {
+        if(data > node.data){
+          node = node.right;
+          return node.contains(data);
+        } else {
+          node = node.left;
+          return node.contains(data); 
+        }
+      } else {
+        return null;
+      }
+    }  
+  }
 
 }
 
