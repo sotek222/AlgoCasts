@@ -34,28 +34,23 @@ class Node {
   }
 
   contains(data){
-    let node = this;
+    if(this && this.data === data){
+      return this;
+    };
+    
+    if (data > this.data && this.right) {
+      return this.right.contains(data);
+    } else if(data < this.data && this.left){
+      return this.left.contains(data);
+    };
 
-    if(node.data === data){
-      return node;
-    } else {
-      if (node.left || node.right) {
-        if(data > node.data){
-          node = node.right;
-          return node.contains(data);
-        } else {
-          node = node.left;
-          return node.contains(data); 
-        }
-      } else {
-        return null;
-      }
-    }  
+    return null;
   }
 
 }
 
 module.exports = Node;
+
 // First implementation:
 // class Node {
 //   constructor(data) {
