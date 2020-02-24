@@ -20,7 +20,7 @@
 function pyramid(n) {
   const width = (n * 2) - 1;
 
-  function buildStep(n, hashes){
+  function buildStep(hashes){
     if (hashes <= 0) {
       return;
     };
@@ -31,12 +31,12 @@ function pyramid(n) {
     step += "#".repeat(hashes)
     step += " ".repeat((width - hashes) / 2);
 
-    buildStep(n, hashes - 2);
+    buildStep(hashes - 2);
 
     console.log(step);
   };    
 
-  buildStep(n, width);
+  buildStep(width);
 };
 
 module.exports = pyramid;
